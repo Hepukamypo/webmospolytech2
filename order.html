@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформить заказ — GreenBowl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cssmain.css">
+    <link rel="stylesheet" href="csslunch.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">GreenBowl</h1>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">О нас</a>
+                <a href="build-lunch.html" class="nav-link">Собрать ланч</a>
+                <a href="order.html" class="nav-link active">Оформить заказ</a>
+                <a href="#contacts" class="nav-link">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Состав заказа -->
+        <section class="section order-summary-section">
+            <div class="container">
+                <h2 class="section-title">Состав заказа</h2>
+                <div id="order-items" class="dishes-grid"></div>
+                <div id="empty-order" style="display:none; text-align:center; padding:40px;">
+                    Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на страницу <a href="build-lunch.html">Собрать ланч</a>.
+                </div>
+            </div>
+        </section>
+
+        <!-- Оформление заказа -->
+        <section class="section order-form-section">
+            <div class="container">
+                <h2 class="section-title">Оформление заказа</h2>
+                <form id="order-form" class="order-form">
+                    <div class="form-grid">
+                        <div class="form-column">
+                            <h3 class="form-title">Ваш заказ</h3>
+                            
+                            <div id="soup-container" class="order-category">
+                                <h4>Суп</h4>
+                            </div>
+                            
+                            <div id="main-container" class="order-category">
+                                <h4>Главное блюдо</h4>
+                            </div>
+                            
+                            <div id="starter-container" class="order-category">
+                                <h4>Салат/стартер</h4>
+                            </div>
+                            
+                            <div id="drink-container" class="order-category">
+                                <h4>Напиток</h4>
+                            </div>
+                            
+                            <div id="dessert-container" class="order-category">
+                                <h4>Десерт</h4>
+                            </div>
+                            
+                            <div id="total-container" class="order-total"></div>
+                        </div>
+
+                        <div class="form-column">
+                            <h3 class="form-title">Ваши данные</h3>
+                            <div class="form-group">
+                                <label for="name" class="form-label">Имя *</label>
+                                <input type="text" id="name" name="name" class="form-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email *</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="subscribe" name="subscribe" class="form-checkbox" checked>
+                                <label for="subscribe" class="form-label checkbox-label">Получать информацию о скидках и акциях</label>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Номер телефона *</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address" class="form-label">Адрес доставки *</label>
+                                <input type="text" id="address" name="address" class="form-input" required>
+                            </div>
+
+                            <p class="form-note"><em>Доставка осуществляется только по Москве</em></p>
+
+                            <div class="form-group">
+                                <label class="form-label">Время доставки:</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="asap" name="delivery_time_option" value="now" class="form-radio" required>
+                                        <label for="asap" class="radio-label">Как можно скорее</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="specified" name="delivery_time_option" value="by_time" class="form-radio" required>
+                                        <label for="specified" class="radio-label">К указанному времени</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="delivery_time" class="form-label">Укажите время доставки</label>
+                                <input type="time" id="delivery_time" name="delivery_time" class="form-input" min="07:00" max="23:00" step="300" required>
+                            </div>
+
+                            <p class="form-note"><em>Доступное время доставки с 7:00 до 23:00</em></p>
+
+                            <div class="form-buttons">
+                                <button type="reset" class="btn btn-reset">Сбросить</button>
+                                <button type="submit" class="btn btn-submit">Отправить</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contacts" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-title">Контакты</h3>
+                    <p class="footer-text"><strong>Адрес:</strong> г. Москва, ул. Тверская, д. 15</p>
+                    <p class="footer-text"><strong>Телефон:</strong> +7 (495) 123-45-67</p>
+                    <p class="footer-text"><strong>Email:</strong> info@greenbowl.ru</p>
+                    <p class="footer-text"><strong>Время работы:</strong> Пн-Пт: 9:00-18:00</p>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">Быстрая связь</h3>
+                    <p class="footer-text">Есть вопросы или предложения? Свяжитесь с нами!</p>
+                    <p class="footer-text">Мы всегда рады помочь и ответить на все ваши вопросы.</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p class="copyright-text">© 2025 GreenBowl. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            const API_URL = 'https://edu.std-900.ist.mospolytech.ru/labs/api/dishes';
+            const ORDER_API = 'http://edu.std-900.ist.mospolytech.ru/labs/api/orders';
+            const API_KEY = '043f7d68-3cee-44dd-9ba1-bfed45a44f99';
+            
+            let dishes = [];
+            try {
+                const res = await fetch(API_URL);
+                if (!res.ok) throw new Error('Сервер не ответил: ' + res.status);
+                dishes = await res.json();
+                
+                // Приводим категории к нужному виду
+                dishes = dishes.map(item => ({
+                    ...item,
+                    category: item.category === 'main-course' ? 'main' : 
+                              item.category === 'salad' ? 'starter' : item.category,
+                    image: item.image.trim()
+                }));
+            } catch (e) {
+                console.error('Ошибка загрузки меню:', e);
+                document.getElementById('empty-order').innerHTML = 'Ошибка загрузки меню. Попробуйте позже.';
+                document.getElementById('empty-order').style.display = 'block';
+                document.querySelector('.order-form-section').style.display = 'none';
+                return;
+            }
+
+            // Получение выбранных блюд из localStorage
+            const savedIds = JSON.parse(localStorage.getItem('selectedDishes') || '{}');
+            const itemsGrid = document.getElementById('order-items');
+            const emptyMsg = document.getElementById('empty-order');
+
+            // Показать сообщение, если заказ пуст
+            if (Object.keys(savedIds).length === 0) {
+                emptyMsg.style.display = 'block';
+                document.querySelector('.order-form-section').style.display = 'none';
+                return;
+            }
+
+            // Отображение выбранных блюд
+            for (const cat in savedIds) {
+                const dishId = savedIds[cat];
+                const dish = dishes.find(d => d.id == dishId);
+                if (!dish) continue;
+
+                const card = document.createElement('div');
+                card.className = 'dish-card';
+                card.innerHTML = `
+                    <img src="${dish.image || 'https://via.placeholder.com/400x300?text=No+Image'}" 
+                         alt="${dish.name}" class="dish-image">
+                    <p class="dish-price">${dish.price}₽</p>
+                    <p class="dish-name">${dish.name}</p>
+                    <p class="dish-weight">${dish.count || ''}</p>
+                    <button type="button" class="dish-button">Удалить</button>
+                `;
+                
+                card.querySelector('.dish-button').onclick = function() {
+                    delete savedIds[cat];
+                    localStorage.setItem('selectedDishes', JSON.stringify(savedIds));
+                    card.remove();
+                    updateOrderSummary();
+                    
+                    // Скрыть форму, если заказ пуст
+                    if (Object.keys(savedIds).length === 0) {
+                        emptyMsg.style.display = 'block';
+                        document.querySelector('.order-form-section').style.display = 'none';
+                    }
+                };
+                
+                itemsGrid.appendChild(card);
+            }
+
+            // Обновление левой части формы
+            function updateOrderSummary() {
+                const categories = ['soup', 'main', 'starter', 'drink', 'dessert'];
+                let total = 0;
+                
+                categories.forEach(cat => {
+                    const container = document.getElementById(`${cat}-container`);
+                    const id = savedIds[cat];
+                    const titleMap = {
+                        soup: 'Суп',
+                        main: 'Главное блюдо',
+                        starter: 'Салат/стартер',
+                        drink: 'Напиток',
+                        dessert: 'Десерт'
+                    };
+                    const title = titleMap[cat];
+                    
+                    if (id) {
+                        const dish = dishes.find(d => d.id == id);
+                        if (dish) {
+                            container.innerHTML = `
+                                <h4>${title}</h4>
+                                <div class="selected-dish">
+                                    <span>${dish.name}</span>
+                                    <span>${dish.price}₽</span>
+                                </div>`;
+                            total += dish.price;
+                        }
+                    } else {
+                        const notSelected = cat === 'main' ? 'Не выбрано' : 'Не выбран';
+                        container.innerHTML = `<h4>${title}</h4><span class="no-dish">${notSelected}</span>`;
+                    }
+                });
+
+                const totalContainer = document.getElementById('total-container');
+                totalContainer.style.display = total ? 'block' : 'none';
+                totalContainer.innerHTML = `<strong>Стоимость заказа: ${total}₽</strong>`;
+            }
+
+            // Инициализация
+            updateOrderSummary();
+
+            // Валидация комбо
+            function isValidCombo() {
+                const { soup, main, starter, drink } = savedIds;
+                return (
+                    (soup && main && starter && drink) || // Комбо 1
+                    (soup && main && drink) ||           // Комбо 2
+                    (soup && starter && drink) ||        // Комбо 3
+                    (main && starter && drink) ||        // Комбо 4
+                    (main && drink)                      // Комбо 5
+                );
+            }
+
+            // Отправка заказа
+            document.getElementById('order-form').onsubmit = async function(e) {
+                e.preventDefault();
+                
+                if (!isValidCombo()) {
+                    alert('Состав заказа не соответствует ни одному комбо! Выберите блюда согласно доступным комбинациям.');
+                    return;
+                }
+
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData.entries());
+                data.subscribe = data.subscribe ? 1 : 0;
+                data.delivery_type = document.querySelector('input[name="delivery_time_option"]:checked').value;
+                data.delivery_time = data.delivery_type === 'by_time' ? data.delivery_time : null;
+
+                const payload = {
+                    full_name: data.name,
+                    email: data.email,
+                    subscribe: data.subscribe,
+                    phone: data.phone,
+                    delivery_address: data.address,
+                    delivery_type: data.delivery_type,
+                    delivery_time: data.delivery_time,
+                    soup_id: savedIds.soup || null,
+                    main_course_id: savedIds.main || null,
+                    salad_id: savedIds.starter || null,
+                    drink_id: savedIds.drink || null,
+                    dessert_id: savedIds.dessert || null
+                };
+
+                try {
+                    const res = await fetch(`${ORDER_API}?api_key=${API_KEY}`, {
+                        method: 'POST',
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const responseText = await res.text();
+                    console.log('Ответ сервера:', responseText);
+                    
+                    let result;
+                    try {
+                        result = JSON.parse(responseText);
+                    } catch (parseError) {
+                        throw new Error('Ошибка обработки ответа сервера');
+                    }
+
+                    if (!res.ok) {
+                        throw new Error(result.error || 'Ошибка сервера при создании заказа');
+                    }
+
+                    alert(`Заказ успешно оформлен! Номер заказа: ${result.id}`);
+                    localStorage.removeItem('selectedDishes');
+                    window.location.href = 'index.html';
+                } catch (err) {
+                    console.error('Ошибка отправки заказа:', err);
+                    alert('Ошибка при оформлении заказа: ' + err.message + '\n\nПроверьте консоль для деталей.');
+                }
+            };
+        });
+    </script>
+</body>
+</html>
