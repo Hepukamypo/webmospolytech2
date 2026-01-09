@@ -1,6 +1,6 @@
 /* Секции с блюдами */
 .dishes-section {
-    background-color: #F8FAF2;
+    background-color: var(--background-color);
     padding: 60px 0;
 }
 
@@ -13,9 +13,9 @@
 }
 
 .dish-card {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: var(--shadow-md);
     padding: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
@@ -23,7 +23,7 @@
 
 .dish-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-lg);
 }
 
 .dish-image {
@@ -38,7 +38,7 @@
 .dish-price {
     font-size: 1.2rem;
     font-weight: bold;
-    color: tomato;
+    color: var(--accent-color);
     margin-bottom: 5px;
 }
 
@@ -71,16 +71,21 @@
 }
 
 /* Форма заказа */
+.order-section {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+}
+
 .order-form {
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: var(--shadow-md);
     padding: 30px;
 }
 
 .form-title {
     font-size: 1.5rem;
-    color: #3E5C41;
+    color: var(--primary-color);
     margin-bottom: 20px;
 }
 
@@ -116,7 +121,7 @@
 .form-input:focus,
 .form-select:focus,
 .form-textarea:focus {
-    border-color: #8BA77D;
+    border-color: var(--secondary-color);
     outline: none;
     box-shadow: 0 0 0 2px rgba(139, 167, 125, 0.2);
 }
@@ -206,6 +211,22 @@
     background-color: #45a049;
 }
 
+/* Адаптивность только для страницы "Собрать ланч" */
+@media (max-width: 800px) {
+    .dishes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .dishes-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
 /* Фильтры */
 .filters {
     display: flex;
@@ -234,8 +255,127 @@
     color: white;
     border-color: #4CAF50;
 }
+/* Блок комбо */
+.combo-section {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+}
 
-/* Панель перехода */
+.combo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.combo-item {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+}
+
+.combo-dish {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.combo-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.combo-icon:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+.combo-label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.combo-note {
+    font-size: 0.85rem;
+    color: #888;
+    margin: 0;
+    font-style: italic;
+}
+
+.dessert-info {
+    grid-column: span 3;
+    padding: 25px;
+}
+
+/* Уведомления */
+.notification-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(2px);
+}
+
+.notification-box {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    max-width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.notification-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin: 0;
+}
+
+.notification-message {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+    margin: 0;
+}
+
+.notification-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    align-self: center;
+}
+
+.notification-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Панель перехода к оформлению заказа */
 #checkout-panel {
     display: none;
     position: sticky;
@@ -249,21 +389,4 @@
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-}
-
-/* Адаптивность */
-@media (max-width: 800px) {
-    .dishes-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 600px) {
-    .dishes-grid {
-        grid-template-columns: 1fr;
-    }
 }

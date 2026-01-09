@@ -150,13 +150,13 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', async function() {
-            const API_URL = 'https://edu.std-900.ist.mospolytech.ru/labs/api/dishes';
-            const ORDER_API = 'http://edu.std-900.ist.mospolytech.ru/labs/api/orders';
             const API_KEY = '043f7d68-3cee-44dd-9ba1-bfed45a44f99';
+            const ORDER_API = 'https://edu.std-900.ist.mospolytech.ru/labs/api/orders';
             
+            // Загрузка данных блюд
             let dishes = [];
             try {
-                const res = await fetch(API_URL);
+                const res = await fetch('https://edu.std-900.ist.mospolytech.ru/labs/api/dishes');
                 if (!res.ok) throw new Error('Сервер не ответил: ' + res.status);
                 dishes = await res.json();
                 
@@ -165,7 +165,7 @@
                     ...item,
                     category: item.category === 'main-course' ? 'main' : 
                               item.category === 'salad' ? 'starter' : item.category,
-                    image: item.image.trim()
+                    image: item.image.trim() || 'https://via.placeholder.com/400x300?text=No+Image'
                 }));
             } catch (e) {
                 console.error('Ошибка загрузки меню:', e);
@@ -196,8 +196,7 @@
                 const card = document.createElement('div');
                 card.className = 'dish-card';
                 card.innerHTML = `
-                    <img src="${dish.image || 'https://via.placeholder.com/400x300?text=No+Image'}" 
-                         alt="${dish.name}" class="dish-image">
+                    <img src="${dish.image}" alt="${dish.name}" class="dish-image">
                     <p class="dish-price">${dish.price}₽</p>
                     <p class="dish-name">${dish.name}</p>
                     <p class="dish-weight">${dish.count || ''}</p>
